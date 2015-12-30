@@ -42,10 +42,10 @@ const double epsilon_8_4 = 1.e-6L;
 static int iter;
 
 //integer solution
-static double integer=-CPX_INFBOUND;
+static double integer = -CPX_INFBOUND;
 
 //lambda count
-static int count_lambda=0;
+static int count_lambda = 0;
 
 //number of variable
 int N;

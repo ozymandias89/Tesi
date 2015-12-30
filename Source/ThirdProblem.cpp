@@ -176,9 +176,9 @@ void ThirdProblem::setup(CEnv env, Prob lp) {
 				coef.push_back(cof);
 
 				//add constraints
-				if (cof!=0)
-				CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
-						&matbeg, &idx[0], &coef[0], 0, 0);
+				if (cof != 0)
+					CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs,
+							&sense, &matbeg, &idx[0], &coef[0], 0, 0);
 
 				idx.clear();
 				coef.clear();
@@ -221,9 +221,9 @@ void ThirdProblem::setup(CEnv env, Prob lp) {
 			coef.push_back(cof);
 
 			//add constraints
-			if (cof!=0)
-			CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
-					&matbeg, &idx[0], &coef[0], 0, 0);
+			if (cof != 0)
+				CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
+						&matbeg, &idx[0], &coef[0], 0, 0);
 
 			idx.clear();
 			coef.clear();
@@ -273,8 +273,8 @@ void ThirdProblem::setup(CEnv env, Prob lp) {
 
 				//add constraints
 				if (cof != 0)
-				CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
-						&matbeg, &idx[0], &coef[0], 0, 0);
+					CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs,
+							&sense, &matbeg, &idx[0], &coef[0], 0, 0);
 
 				idx.clear();
 				coef.clear();
@@ -321,8 +321,8 @@ void ThirdProblem::setup(CEnv env, Prob lp) {
 
 			//add constraints
 			if (cof != 0)
-			CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
-					&matbeg, &idx[0], &coef[0], 0, 0);
+				CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
+						&matbeg, &idx[0], &coef[0], 0, 0);
 
 			idx.clear();
 			coef.clear();
@@ -350,8 +350,8 @@ void ThirdProblem::setup(CEnv env, Prob lp) {
 			coef.push_back(cof);
 
 			if (cof != 0)
-			CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
-					&matbeg, &idx[0], &coef[0], 0, 0);
+				CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
+						&matbeg, &idx[0], &coef[0], 0, 0);
 
 			idx.clear();
 			coef.clear();
@@ -377,8 +377,8 @@ void ThirdProblem::setup(CEnv env, Prob lp) {
 			coef.push_back(cof);
 
 			if (cof != 0)
-			CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
-					&matbeg, &idx[0], &coef[0], 0, 0);
+				CHECKED_CPX_CALL(CPXaddrows, env, lp, 0, 1, nzcnt, &rhs, &sense,
+						&matbeg, &idx[0], &coef[0], 0, 0);
 
 			idx.clear();
 			coef.clear();
@@ -437,18 +437,18 @@ void ThirdProblem::solve(CEnv env, Prob lp) {
 		//  if problem generate lambda = 1 in continuous STOP
 		if (fabs(lambda - 1) < epsilon_8_1) {
 			count_lambda++;
-			if(count_lambda == 5)
-					throw std::runtime_error("lambda =1. STOP");
-		}else
-			count_lambda=0;
-
+			if (count_lambda == 5)
+				throw std::runtime_error("lambda =1. STOP");
+		} else
+			count_lambda = 0;
 
 		// free
 		free(cur_colname);
 		free(cur_colnamestore);
 
 	} else {
-		throw std::runtime_error("Third  problem has conflict or unbounded!!!!!");
+		throw std::runtime_error(
+				"Third  problem has conflict or unbounded!!!!!");
 	}
 
 }

@@ -548,9 +548,9 @@ void SecondProblem::solve(CEnv env, Prob lp) {
 
 	CHECKED_CPX_CALL(CPXlpopt, env, lp);
 
-	int stat= CPXgetstat(env, lp);
+	int stat = CPXgetstat(env, lp);
 
-	if (stat==CPX_STAT_UNBOUNDED)
+	if (stat == CPX_STAT_UNBOUNDED)
 		throw std::runtime_error("Second problem are unbounded");
 
 	if (stat != CPX_STAT_INFEASIBLE) {

@@ -172,7 +172,9 @@ int main(int argc, char const *argv[]) {
 							CPXPARAM_Simplex_Tolerances_Optimality, 1e-5);
 					CHECKED_CPX_CALL(CPXwriteprob, env_third, lp_third,
 							"../data/third_problem.lp", 0);
+
 					third_prob->solve(env_third, lp_third);
+
 					third_prob->update_y_bar(env_third, lp_third,
 							sec_prob->cost);
 
@@ -205,13 +207,17 @@ int main(int argc, char const *argv[]) {
 
 		} while (iteration - iter != 0);
 
-		cout << "Number of constraints added: " << CPXgetnumrows(env, lp) - Num_original_constraints << endl;
+		cout << "Number of constraints added: "
+				<< CPXgetnumrows(env, lp) - Num_original_constraints << endl;
 		CPXfreeprob(env, &lp);
 		CPXcloseCPLEX(&env);
 
 	} catch (std::exception& e) {
-		cout << "Number of constraints added: " << CPXgetnumrows(env, lp) - Num_original_constraints << endl;
+		cout << "Number of constraints added: "
+				<< CPXgetnumrows(env, lp) - Num_original_constraints << endl;
 		std::cout << ">>>EXCEPTION: " << e.what() << std::endl;
+		CPXfreeprob(env, &lp);
+		CPXcloseCPLEX(&env);
 	}
 
 	return 0;
